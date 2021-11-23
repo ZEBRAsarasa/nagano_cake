@@ -17,7 +17,7 @@
           <%= link_to "ながのCAKE", root_path, class: "navbar-brand"%>
           <div class="collapse navbar-collapse" id="navbarDropdown">
             <% if customer_signed_in? %>
-            ようこそ、<%= @customer.last_name %>さん!
+            <!--ようこそ、<%= %>さん!-->
             <ul class="navbar-nav ml-auto">
               <li>
                 <%= link_to "マイページ", customer_path(current_customer.id) %>

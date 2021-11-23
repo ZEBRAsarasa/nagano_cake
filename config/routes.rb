@@ -7,14 +7,17 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
 
-  get "homes/about" => 'homes#about'
-  root to: 'homes#top'
 
   scope module: :public do
+    root to: 'homes#top'
+    get "homes/about" => 'homes#about'
+
     resources :items , only: [:index, :show]
+
     resources :customers, only: [:show, :edit, :update]
     get "customers/cancel" => "customers#cancel"
     patch "customers/cancel_do" => "customers#cancel_do"
+
   end
 
   namespace :admin do
