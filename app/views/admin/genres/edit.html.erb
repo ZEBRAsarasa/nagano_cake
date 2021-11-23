@@ -1,0 +1,12 @@
+<h3>ジャンル編集</h3>
+<%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+  <% if @genre.errors.any? %>
+      <%= @genre.errors.count %>件のエラーメッセージがあります。
+      <% @genre.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+  <% end %>
+  <%= f.label :ジャンル名 %>
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存" %>
+<% end %>

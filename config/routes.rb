@@ -21,9 +21,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
     root to: "homes#top"
     get "/" => "admin#top"
+
     resources :items
+
+    resources :genres, only: [:index, :create, :edit, :update]
+
   end
 
 end
