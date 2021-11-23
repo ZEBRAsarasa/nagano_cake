@@ -12,4 +12,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     devise_parameter_sanitizer.permit(:sign_up, keys: added_sttrs)
   end
 
+  Tax = 1.1
+
 end

@@ -10,6 +10,7 @@ class Admin::GenresController < ApplicationController
     if @genre.save
      redirect_to admin_genres_path, notice: "新しい「ジャンル」の作成に成功しました"
     else
+      @genres = Genre.all
       render:index
     end
   end

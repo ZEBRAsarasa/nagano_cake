@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/" => "admin#top"
 
-    resources :items
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
 
