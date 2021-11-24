@@ -1,4 +1,12 @@
 <h3>商品編集</h3>
+<div>
+<% if @item.errors.any? %>
+ <%= @item.errors.count %>件のエラーメッセージがあります。
+ <% @item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+ <% end %>
+<% end %>
+</div>
 <%= form_with model: @item, url: admin_item_path(@item.id), local: true do |f| %>
  <div class="form-group">
    <%= f.label :商品画像 %>

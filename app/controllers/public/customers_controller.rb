@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
-    redirect_to customer_path unless current_customer.id == @customer.id
+    # redirect_to customer_path unless current_customer.id == @customer.id
   end
 
   def update
@@ -15,6 +15,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def cancel
+    @customer = Customer.find(params[:id])
   end
 
   def cancel_do

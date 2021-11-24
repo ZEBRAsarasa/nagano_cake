@@ -6,9 +6,10 @@ class Item < ApplicationRecord
   belongs_to :genre
 
   attachment :image
-  
-  enum is_active: {
-    
-  }
+
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price_excluding_tax, presence: true
+  validates :genre_id, presence: true
 
 end

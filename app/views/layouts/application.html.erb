@@ -23,7 +23,7 @@
                 <%= link_to "マイページ", customer_path(current_customer.id) %>
               </li>
               <li>
-                <%= link_to "商品一覧" %>
+                <%= link_to "商品一覧", items_path %>
               </li>
               <li>
                 <%= link_to "カート" %>
@@ -38,7 +38,7 @@
                   <%= link_to "商品一覧", admin_items_path, class: "fas fa-home nav-link text-light" %>
                   </li>
                   <li>
-                    <%= link_to "会員一覧", class: "fas fa-home nav-link text-light" %>
+                    <%= link_to "会員一覧", admin_customers_path, class: "fas fa-home nav-link text-light" %>
                   </li>
                   <li>
                     <%= link_to "注文履歴一覧", class: "fas fa-home nav-link text-light" %>
