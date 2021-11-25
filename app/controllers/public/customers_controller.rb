@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
 
   def cancel_do
     @customer = current_customer
-    redirect_to homes_about_path
+    redirect_to root_path
   end
 
   private
