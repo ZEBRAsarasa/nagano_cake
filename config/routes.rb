@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :customers
-   devise_scope :customers do
-    get '/customers', to: redirect("/customers/sign_up")
-  end
+  devise_for :customers,path:"", cotrollers: {
+  }
+  # devise_scope :customers do
+  #   get '/customers', to: redirect("/customers/sign_up")
+  # end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -14,9 +15,12 @@ Rails.application.routes.draw do
 
     resources :items , only: [:index, :show]
 
-    resources :customers, only: [:show, :edit, :update]
-    get "customers/cancel" => "customers#cancel"
-    patch "customers/cancel_do" => "customers#cancel_do"
+    resource :customers, only: [:show, :edit, :update] do
+      collection do
+        get :cancel
+        patch :cancel_do
+      end
+    end
 
   end
 

@@ -5,8 +5,8 @@
   <p>退会する場合は、「退会する」をクリックしてください。</p>
 </div>
 <div>
-  <%= link_to "退会しない", customer_path(@customer.id) %>
-  <%= form_with model: @customer, local: true do |f| %>
+  <%= link_to "退会しない", customers_path %>
+  <%= form_with model: @customer, url: cancel_do_customers_path, local: true do |f| %>
     <%= f.submit "退会する" %>
   <% end %>
 </div>

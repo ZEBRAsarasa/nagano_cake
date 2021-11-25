@@ -1,26 +1,30 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     # redirect_to customer_path unless current_customer.id == @customer.id
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
+    @customer = current_customer
+    if @customer.update(customer_params)
+      redirect_to customers_path
+    else
+      render:edit
+    end
   end
 
   def cancel
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def cancel_do
-    @customer = Customer.find(params[:id])
-    redirect_to customer_path unless current_customer.id == @customer.id
+    @customer = current_customer
+    redirect_to homes_about_path
   end
 
   private

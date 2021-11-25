@@ -20,7 +20,7 @@
             <!--ようこそ、<%= %>さん!-->
             <ul class="navbar-nav ml-auto">
               <li>
-                <%= link_to "マイページ", customer_path(current_customer.id) %>
+                <%= link_to "マイページ", customers_path %>
               </li>
               <li>
                 <%= link_to "商品一覧", items_path %>
@@ -53,6 +53,9 @@
 
           <% else %>
             <ul class="navbar-nav ml-auto">
+              <li>
+                <%= link_to "Admin", new_admin_session_path, class: "fas fa-home nav-link text-light" %>
+              </li>
               <li>
                 <%= link_to "About", homes_about_path, class: "fas fa-home nav-link text-light" %>
               </li>
