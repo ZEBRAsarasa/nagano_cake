@@ -18,8 +18,9 @@
   <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
     <h3><%= @item.name %></h3>
     <p><%= @item.introduction %></p>
-    <p>¥<%= (@item.price_excluding_tax*1.1).round.to_s(:delimited) %>(税込)</p>
-    <%= form_with model: @item, local:true do |f| %>
-    <p><%=  %><%=  %></p>
+    <p>¥<%= (@item.price_excluding_tax*@tax).round.to_s(:delimited) %>(税込)</p>
+    <%= form_with model: @item, url: cart_items_path, local:true do |f| %>
+    <p><%= f.select :amount, {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10},
+        {include_blank: "個数選択"} %><%= f.submit "カートに入れる" %></p>
     <% end %>
 </div>

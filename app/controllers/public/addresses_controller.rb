@@ -10,6 +10,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
+    @addresses = Address.all
     @address = Address.new(address_params)
     if @address.save
      redirect_to addresses_path
