@@ -24,6 +24,8 @@ class Public::CustomersController < ApplicationController
 
   def cancel_do
     @customer = current_customer
+    @customer.is_deleted = true
+    @customer.update(customer_params)
     redirect_to root_path
   end
 

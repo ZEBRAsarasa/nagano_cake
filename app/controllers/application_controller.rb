@@ -13,5 +13,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   end
 
   Tax = 1.1
+  ShippingCost = 800
 
 end

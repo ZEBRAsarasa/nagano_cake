@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <div class="container">
   <h3 ><span class="bg-secondary">配送先登録/一覧</span></h3>
   <% if @address.errors.any? %>
@@ -42,9 +44,10 @@
         <td><%= address.postal_code %></td>
         <td><%= address.address %></td>
         <td><%= address.name %></td>
-        <td><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
-            　　<%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger", data: { confirm: "削除しますか？"} %></td>
-
+        <td>
+          <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+          <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger", data: { confirm: "削除しますか？"} %>
+        </td>
       </tr>
       <% end %>
     </tbody>
