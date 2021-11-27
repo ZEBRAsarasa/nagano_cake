@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @tax = Tax
   end
 
@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def all_delete
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
     redirect_to cart_items_path, notice: "カート内にあった商品をすべて削除しました。"
   end
