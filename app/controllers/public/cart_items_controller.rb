@@ -12,14 +12,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path, notice: "カート内にあった商品を一つ削除しました。"
   end
 
   def all_delete
     @cart_items = CartItem.all
-    @cart_items.destroy
+    @cart_items.destroy_all
     redirect_to cart_items_path, notice: "カート内にあった商品をすべて削除しました。"
   end
 
