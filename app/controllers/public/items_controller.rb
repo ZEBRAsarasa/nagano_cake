@@ -9,11 +9,12 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @tax = Tax
     @item = Item.find(params[:id])
-
-    # @cart_item = CartItem.new
+    
+    
+    @cart_item = CartItem.new
     # @cart_item.save
     # redirect_to cart_items_path
   end
 
-  
+
 end
