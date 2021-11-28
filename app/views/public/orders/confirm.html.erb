@@ -63,10 +63,10 @@
       <%= @order.address %>
       <%= @order.name %>
     </div>
-    <!--<div class="row">-->
-    <!--<%= form_with model: @order, url: orders_thanks_path, local: true do |f| %>-->
-    <!--<div class="col-4"></div>-->
-    <!--  <%= f.submit "注文を確定する", class: "btn btn-success" %>-->
-    <!--<% end %>-->
-    <!--</div>-->
+    <div class="row">
+      <div class="col-4"></div>
+      <%= form_with model: @order, url: orders_thanks_path, local: true do |f| %>
+        <%= f.submit "注文を確定する", class: "btn btn-success" %>
+      <% end %>
+    </div>
 </div>

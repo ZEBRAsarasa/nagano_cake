@@ -1,22 +1,24 @@
+<p id=notice><%= notice %></p>
+
 <div class="container">
     <div class="row">
       <h3 class="bg-secondary">注文情報入力</h3>
-    </div>
-    <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
-    <div class="form-group row">
-      <strong class="w-100"><%= f.label :payment_method, "支払方法" %></strong>
-      <p>
-        <div class="col-1"></div>
-        <%= f.radio_button :payment_method, :credit %>
-        <%= f.label :payment_method, "クレジットカード" %>
-      </p>
-      <p>
-        <div class="col-1"></div>
-        <%= f.radio_button :payment_method, :bank %>
-        <%= f.label :payment_method, "銀行振込" %>
-      </p>
-    </div>
-      <strong class="w-100">お届け先</strong>
+      </div>
+      <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+      <div class="form-group row">
+        <strong class="w-100"><%= f.label :payment_method, "支払方法" %></strong>
+        <p>
+          <div class="col-1"></div>
+          <%= f.radio_button :payment_method, :credit %>
+          <%= f.label :payment_method, "クレジットカード" %>
+        </p>
+        <p>
+          <div class="col-1"></div>
+          <%= f.radio_button :payment_method, :bank %>
+          <%= f.label :payment_method, "銀行振込" %>
+        </p>
+      </div>
+        <strong class="w-100">お届け先</strong>
       <div class="form-group row">
         <div class="col-1"></div>
           <%= f.radio_button :address_option, "1" %>

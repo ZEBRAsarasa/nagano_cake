@@ -14,32 +14,33 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
 
     @order = Order.new(order_params)
-    if params[:order][:address_option] == 1
+    if params[:order][:address_option] == "1"
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
-      @order.save(order_params)
-      redirect_to orders_confirm_path
-    elsif params[:order][:address_option] == 2
-      @address = Address.find(params[:id])
+    elsif params[:order][:address_id] == ""
+      flash.now[:alert] = '住所が選択されていません。'
+      render:new
+    elsif params[:order][:address_option] == "2"
+      @address = Address.find(params[:order][:address_id].to_i)
       @order.address = @address.address
       @order.postal_code = @address.postal_code
       @order.name = @address.name
-      @order.save
-      redirect_to orders_confirm_path
-    elsif params[:order][:address_option] ==3
-      @order.save
-      redirect_to order_confirm_path
+    elsif params[:order][:address] == "" || params[:order][:postal_code] == "" || params[:order][:name] == ""
+      flash.now[:alert] = '住所、郵便番号、宛名いずれかが入力されていません。'
+      render:new
+    else
+      flash.now[:alert] = 'お届け先が選択されていません。'
+      render:new
     end
-
   end
 
   def create
-    @order = Order.new
     @order.shipping_cost = ShippingCost
     @order.total_payment = @total_payment
+    @order = Order.new
     if @order.save(order_params)
-      redirect_to orders_confirm
+      redirect_to orders_thanks_path
     else
       render:new
     end

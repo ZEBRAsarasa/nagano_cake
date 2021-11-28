@@ -31,10 +31,11 @@ class Public::CartItemsController < ApplicationController
       @cart_item.amount = params[:cart_item][:amount]
       @cart_item.save
       redirect_to cart_items_path
+    elsif params[:cart_item][:amount] == ""
+      redirect_to item_path(params[:cart_item][:item_id]), notice: "個数が選択されていません"
     else
       redirect_to item_path(params[:cart_item][:item_id]), notice: "すでに商品が追加されています。"
     end
-
 
   end
 
