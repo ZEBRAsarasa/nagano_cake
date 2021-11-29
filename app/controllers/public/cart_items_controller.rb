@@ -37,6 +37,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to item_path(params[:cart_item][:item_id]), notice: "すでに商品が追加されています。"
     end
 
+
   end
 
   private

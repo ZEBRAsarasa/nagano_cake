@@ -21,7 +21,7 @@
         <strong class="w-100">お届け先</strong>
       <div class="form-group row">
         <div class="col-1"></div>
-          <%= f.radio_button :address_option, "1" %>
+          <%= f.radio_button :address_option, "1", checked: true %>
           <%= f.label :address, "ご自身の住所" %><br />
             <%= current_customer.postal_code %>
             <%= current_customer.address %><br />

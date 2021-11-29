@@ -8,6 +8,6 @@
   <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
   <%= form_with model: @customer, url: cancel_do_customers_path, local: true do |f| %>
     <%= f.hidden_field :is_deleted, :value => current_customer.id %>
-    <%= f.submit "退会する", class: "btn btn-danger" %>
+    <%= f.submit "退会する", class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
   <% end %>
 </div>

@@ -10,14 +10,15 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @tax = Tax
-    @shipping_cost = ShippingCost
     @cart_items = current_customer.cart_items.all
-
     @order = Order.new(order_params)
+    @order.shipping_cost = ShippingCost
     if params[:order][:address_option] == "1"
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_option] == "3"
+      @order.save
     elsif params[:order][:address_id] == ""
       flash.now[:alert] = '住所が選択されていません。'
       render:new
@@ -36,10 +37,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order.address = current_customer.order.address
     @order.shipping_cost = ShippingCost
     @order.total_payment = @total_payment
-    @order = Order.new
-    if @order.save(order_params)
+    @order = Order.new(order_params)
+    if @order.save
+
+      # @cart_items = current_customer.cart_items.all
+      # @cart_items.destroy_all
       redirect_to orders_thanks_path
     else
       render:new
@@ -50,9 +55,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
   end
 
   def show
+    @order  = Order.find(params[:id])
   end
 
   private
