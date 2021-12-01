@@ -6,10 +6,10 @@
   </div>
   <div class="row">
     <div class="col-8">
-      <h6>注文情報</h6>
+      <h6><strong>注文情報</strong></h6>
     </div>
     <div class="col-4">
-      <h6>請求情報</h6>
+      <h6><strong>請求情報</strong></h6>
     </div>
   </div>
   <div class="row">
@@ -17,19 +17,41 @@
       <table class="table table-bordered">
         <tr>
           <td>注文日</td>
-          <td><%= @order.created_at %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <td>配送先</td>
-          <td><%= @order.address %></td>
+          <td><br>配送先</td>
+          <td>
+            <%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+            </td>
         </tr>
         <tr>
           <td>支払方法</td>
-          <td><%= @order.payment_method %></td>
+          <td>
+            <% if @order.payment_method == "credit" %>
+              <p>クレジットカード</p>
+            <% elsif @order.payment_method == "bank" %>
+              <p>銀行振込</p>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>ステータス</td>
-          <td><%= @order.order_status %></td>
+          <td>
+            <% if @order.order_status == "payment_waiting" %>
+              <p>入金待ち</p>
+            <% elsif @order.order_status == "payment_confirmation" %>
+              <p>入金確認</p>
+            <% elsif @order.order_status == "in_production" %>
+              <p>製作中</p>
+            <% elsif @order.order_status == "preparing_delivery" %>
+              <p>発送準備中</p>
+            <% elsif @order.order_status == "delivered" %>
+              <p>発送済み</p>
+            <% end %>
+          </td>
         </tr>
       </table>
     </div>
@@ -37,22 +59,22 @@
       <table class="table table-bordered">
         <tr>
           <td>商品合計</td>
-          <td><%=  %></td>
+          <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
         </tr>
         <tr>
           <td>配送料</td>
-          <td><%= @order.shipping_cost %></td>
+          <td><%= @order.shipping_cost.to_s(:delimited) %></td>
         </tr>
         <tr>
-          <td>ご請求額</td>
-          <td><%= @order.total_payment %></td>
+          <td><strong>ご請求額</strong></td>
+          <td><%= @order.total_payment.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-9">
-      <h6>注文内容</h6>
+      <h6><strong>注文内容</strong></h6>
     </div>
   </div>
   <div class="row">
@@ -67,14 +89,16 @@
           </tr>
         </thead>
         <tbody>
-          <%=  %>
+          <% @order_details.each do |order_detail| %>
+            <% if order_detail.order_id == @order.id %>
           <tr>
-            <td><%=  %></td>
-            <td><%=  %></td>
-            <td><%=  %></td>
-            <td><%=  %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price_including_tax.to_s(:delimited) %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= (order_detail.price_including_tax * order_detail.amount).to_s(:delimited) %></td>
           </tr>
-          <%  %>
+            <% end %>
+          <% end %>
         </tbody>
       </table>
     </div>

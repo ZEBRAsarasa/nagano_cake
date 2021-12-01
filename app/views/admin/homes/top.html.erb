@@ -19,7 +19,7 @@
           <%= @orders.each do |order| %>
           <tr>
             <td><%= order.created_at %></td>
-            <td><%=  %></td>
+            <td><%= order.customer.last_name + order.customer.first_name %></td>
             <td><%=  %></td>
             <td><%= order.order_status %></td>
           </tr>

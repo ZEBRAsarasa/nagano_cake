@@ -18,13 +18,33 @@
         </tr>
       </thead>
       <tbody>
-        <%= @orders.each do |order| %>
+        <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at %></td>
-          <td><%= order.address %></td>
-          <td><%=  %></td>
-          <td><%= order.total_payment %></td>
-          <td><%= order.order_status %></td>
+          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+            〒<%= order.postal_code %><br>
+            <%= order.address %><br>
+            <%= order.name %>
+            </td>
+          <td>
+            <% order.order_details.each do |order_detail|  %>
+            <%= order_detail.item.name %><br>
+            <% end %>
+            </td>
+          <td><%= order.total_payment.to_s(:delimited) %>円</td>
+          <td>
+            <% if order.order_status == "payment_waiting" %>
+              <p>入金待ち</p>
+            <% elsif order.order_status == "payment_confirmation" %>
+              <p>入金確認</p>
+            <% elsif order.order_status == "in_production" %>
+              <p>製作中</p>
+            <% elsif order.order_status == "preparing_delivery" %>
+              <p>発送準備中</p>
+            <% elsif order.order_status == "delivered" %>
+              <p>発送済み</p>
+            <% end %>
+          </td>
           <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
         </tr>
         <% end %>
