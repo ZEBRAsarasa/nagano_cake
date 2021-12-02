@@ -20,7 +20,7 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td><br><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             〒<%= order.postal_code %><br>
             <%= order.address %><br>
@@ -33,15 +33,15 @@
             </td>
           <td><%= order.total_payment.to_s(:delimited) %>円</td>
           <td>
-            <% if order.order_status == "payment_waiting" %>
+            <% if order.order_status == "入金待ち" %>
               <p>入金待ち</p>
-            <% elsif order.order_status == "payment_confirmation" %>
+            <% elsif order.order_status == "入金確認" %>
               <p>入金確認</p>
-            <% elsif order.order_status == "in_production" %>
+            <% elsif order.order_status == "製作中" %>
               <p>製作中</p>
-            <% elsif order.order_status == "preparing_delivery" %>
+            <% elsif order.order_status == "発送準備中" %>
               <p>発送準備中</p>
-            <% elsif order.order_status == "delivered" %>
+            <% elsif order.order_status == "発送済み" %>
               <p>発送済み</p>
             <% end %>
           </td>

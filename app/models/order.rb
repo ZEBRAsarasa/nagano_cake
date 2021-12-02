@@ -10,19 +10,19 @@ class Order < ApplicationRecord
   }
 
   enum order_status: {
-    payment_waiting: 0, #入金待ち
-    payment_confirmation: 1,  #入金確認
-    in_production: 2, #製作中
-    preparing_delivery: 3,  #発送準備中
-    delivered: 4  #発送済み
+    入金待ち: 0, #入金待ち
+    入金確認: 1,  #入金確認
+    製作中: 2, #製作中
+    発送準備中: 3,  #発送準備中
+    発送済み: 4  #発送済み
   }
 
   validates :postal_code, presence: true
   validates :address,     presence: true
   validates :name,        presence: true
 
-  
 
-  
+
+
 
 end
