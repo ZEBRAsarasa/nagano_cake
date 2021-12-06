@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <h3 class="bg-secondary">商品新規登録</h3>
-  </div>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　商品新規登録　</h3>
+  </div><br>
     <div>
       <% if @item.errors.any? %>
        <%= @item.errors.count %>件のエラーメッセージがあります。
@@ -31,7 +32,7 @@
         <div class="col-sm-1"></div>
         <%= f.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label" %>
         <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "col-sm-4" %>
-      </div>
+      </div><br>
       <div class="form-group row">
         <div class="col-sm-1"></div>
         <%= f.label :price_excluding_tax, "税抜価格", class: "col-sm-2 col-form-label" %>

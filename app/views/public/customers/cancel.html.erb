@@ -1,13 +1,17 @@
-<h3>本当に退会しますか?</h3>
-<div>
-  <p>退会すると、会員登録情報や</p>
-  <p>これまでの購入履歴が閲覧できなくなります。</p>
-  <p>退会する場合は、「退会する」をクリックしてください。</p>
-</div>
-<div>
-  <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
-  <%= form_with model: @customer, url: cancel_do_customers_path, local: true do |f| %>
-    <%= f.hidden_field :is_deleted, :value => current_customer.id %>
-    <%= f.submit "退会する", class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
-  <% end %>
+<div class="container text-center"><br><br><br><br><br><br>
+    <p class="text-center"><strong>本当に退会しますか?</strong></p><br>
+  <div>
+    <p>退会すると、会員登録情報や</p>
+    <p>これまでの購入履歴が閲覧できなくなります。</p>
+    <p>退会する場合は、「退会する」をクリックしてください。</p>
+  </div><br>
+  <div class="row">
+    <div class="col-5"></div>
+    <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
+    <div>　　</div>
+    <%= form_with model: @customer, url: cancel_do_customers_path, local: true do |f| %>
+      <%= f.hidden_field :is_deleted, :value => current_customer.id %>
+      <%= f.submit "退会する", class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+    <% end %>
+  </div>
 </div>

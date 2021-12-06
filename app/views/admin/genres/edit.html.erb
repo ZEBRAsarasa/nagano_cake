@@ -1,10 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <div class="w-100">　</div>
     <div class="col-sm-1"></div>
-    <h3 class="bg-secondary">ジャンル編集</h3>
-    <div class="w-100">　</div>
-  </div>
+    <h3 class="bg-secondary">　ジャンル編集　</h3>
+  </div><br>
   <div class="row">
     <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
       <% if @genre.errors.any? %>

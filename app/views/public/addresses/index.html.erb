@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
-  <h3 ><span class="bg-secondary">配送先登録/一覧</span></h3>
+<div class="container"><br>
+  <div class="row">
+    <div class="col-1"></div>
+    <h3><span class="bg-secondary">　配送先登録/一覧　</span></h3>
+  </div><br>
   <% if @address.errors.any? %>
     <%= @address.errors.count %>件のエラーメッセージがあります。
     <% @address.errors.full_messages.each do |message| %>

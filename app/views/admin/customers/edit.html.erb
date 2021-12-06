@@ -1,9 +1,8 @@
-<div class="container">
-  <br>
+<div class="container"><br>
   <div class="row">
-    <h3 class="bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
-  </div>
-  <br>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　<%= @customer.full_name %>さんの会員情報編集　</h3>
+  </div><br>
   <div>
     <% if @customer.errors.any? %>
       <%= @customer.errors.count %>件のエラーメッセージがあります。

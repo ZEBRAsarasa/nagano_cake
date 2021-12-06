@@ -1,11 +1,10 @@
 <p id="notice"><%= flash[:notice] %></p>
 
-<div class="container">
+<div class="container"><br>
   <div class="row">
     <div class="col-sm-1"></div>
-    <h3 class="bg-secondary">ジャンル一覧・追加</h3>
-    <div class="w-100">　</div>
-  </div>
+    <h3 class="bg-secondary">　ジャンル一覧・追加　</h3>
+  </div><br>
   <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
     <% if @genre.errors.any? %>
       <%= @genre.errors.count %>件のエラーメッセージがあります。
@@ -18,7 +17,7 @@
   <%= f.text_field :name, class: "col-sm-4" %>
   <div>　　　</div>
   <%= f.submit "新規登録", class: "col-sm-2 btn btn-success" %>
-  </div>
+  </div><br>
 <% end %>
   <div class="row">
   <table class="table col-sm-4">

@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <h3>配送先編集</h3>
-  </div>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　配送先編集　</h3>
+  </div><br>
 
   <% if @address.errors.any? %>
     <%= @address.errors.count %>件のエラーメッセージがあります。
@@ -9,7 +10,6 @@
       <li><%= message %></li>
     <% end %>
   <% end %>
-
 
 <%= form_with model: @address, url: address_path(@address.id), local: true do |f| %>
   <div class="form-group row">
@@ -26,9 +26,5 @@
     <div class="col-sm-4"></div>
     <%= f.submit "変更内容を保存", class: "col-sm-2 btn btn-success" %>
   </div>
-
-
-
-
 <% end %>
 </div>

@@ -1,11 +1,10 @@
 <p><%= notice %></p>
 
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <div class="col-3">
-      <h3>注文履歴詳細</h3>
-    </div>
-  </div>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　注文履歴詳細　</h3>
+  </div><br>
   <div class="row">
     <div class="col-3">
       <h6><strong>購入者</strong></h6>
@@ -50,10 +49,10 @@
     <div class="col-8">
       <%= form_with model: @order, url: admin_order_path(@order.id), local: true do |f| %>
       <%= f.select :order_status, Order.order_statuses.keys %>
-      <%= f.submit "更新", class: "btn btn-success" %>
+      　<%= f.submit "更新", class: "btn btn-success" %>
       <% end %>
     </div>
-  </div>
+  </div><br>
   <div class="row">
     <div class="col-9">
       <table class="table table-bordered">

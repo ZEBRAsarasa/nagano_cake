@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <h3 class="bg-secondary">新規会員登録</h3>
-  </div>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　新規会員登録　</h3>
+  </div><br>
 
   <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -56,12 +57,12 @@
     <div class="actions form-group row">
       <div class="col-3"></div>
       <%= f.submit "新規登録", class: "col-2 btn btn-success" %>
-    </div>
+    </div><br>
 
   <% end %>
     <div class="row">
       <div class="col-1"></div>
-      <h6 class="bg-secondary"><strong>既に登録済みの方</strong></h6>
+      <h6 class="bg-secondary"><strong>　既に登録済みの方　</strong></h6>
     </div>
 
     <div class="row">

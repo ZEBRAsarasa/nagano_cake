@@ -1,9 +1,8 @@
-<div class="container">
+<div class="container"><br>
   <div class="row">
-    <div class="col-3">
-      <h3 class="bg-secondary">注文履歴一覧</h3>
-    </div>
-  </div>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">　注文履歴一覧　</h3>
+  </div><br>
   <div class="row">
     <div>
     <table class="table table-bordered">
@@ -31,8 +30,8 @@
             <%= order_detail.item.name %><br>
             <% end %>
             </td>
-          <td><%= order.total_payment.to_s(:delimited) %>円</td>
-          <td>
+          <td><br><%= order.total_payment.to_s(:delimited) %>円</td>
+          <td><br>
             <% if order.order_status == "入金待ち" %>
               <p>入金待ち</p>
             <% elsif order.order_status == "入金確認" %>
