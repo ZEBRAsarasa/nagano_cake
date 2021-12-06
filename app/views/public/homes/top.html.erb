@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-2">
       <table class="table table-striped">
             <p>ジャンル検索</p>
             <% @genres.each do |genre| %>
@@ -8,26 +8,37 @@
             <% end %>
       </table>
     </div>
-    <div class="col-md-8">
-      <p>ようこそ、ながのCAKEへ！</p>
-      <p>このサイトは、ケーキ販売のECサイトになります。</p>
-      <p>会員でない方も商品の閲覧はできますが、</p>
-      <p>購入には会員登録が必要になります。</p>
-
-      <h3>新着商品</h3>
-
-        <% @items.each do |item| %>
-        <div>
-          <%= link_to item_path(item.id) do %>
-          <%= attachment_image_tag item, :image, :fill, 100, 100 %>
-
-          <%= item.name %>
-          <%= item.price_excluding_tax %>
-          <% end %>
-        </div>
-        <% end %>
-        <%= paginate @items %>
-
+    <div class="col-8">
+      <div class="text-center text-align-center">
+        <div>　</div>
+        <p>ようこそ、ながのCAKEへ！</p>
+        <p>このサイトは、ケーキ販売のECサイトになります。</p>
+        <p>会員でない方も商品の閲覧はできますが、</p>
+        <p>購入には会員登録が必要になります。</p>
+        <div>　</div>
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <h3><strong>新着商品</strong></h3>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <% @items.each do |item| %>
+    <div class="col-2">
+      <div>
+        <%= link_to item_path(item.id) do %>
+        <%= attachment_image_tag item, :image, :fill, 200, 150 %><br>
+        <% end %>
+        <%= item.name %><br>
+        ￥<%= item.price_excluding_tax.to_s(:delimited) %>
+      </div>
+    </div><div>　　</div>
+    <% end %><br>
+  </div>
+  <div class="row">
+    <div class="col-10"></div>
+    <%= paginate @items %>
   </div>
 </div>
