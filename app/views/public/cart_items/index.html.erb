@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= @cart_items.each do |cart_item| %>
+            <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %><%= cart_item.item.name %></td>
               <td class="col-sm-2"><%= (cart_item.item.price_excluding_tax*@tax).round.to_s(:delimited) %></td>

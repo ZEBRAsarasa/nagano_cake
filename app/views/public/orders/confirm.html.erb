@@ -2,7 +2,8 @@
 
 <div class="container">
   <div class="row">
-    <h3>注文情報確認</h3>
+    <div class="col-1"></div>
+    <h3 class="bg-secondary">注文情報確認</h3>
   </div>
     <div class="row">
       <div class="col-8">
@@ -50,15 +51,15 @@
       </div>
     </div>
     <div class="row">
-      <strong class="col-2">支払方法</strong>
+      <strong class="col-1">支払方法</strong>
       <% if @order.payment_method == "credit" %>
         <p>クレジットカード</p>
         <% elsif @order.payment_method == "bank" %>
         <p>銀行振込</p>
       <% end %>
-    </div>
+    </div><br>
     <div class="row">
-      <strong class="col-2">お届け先</strong>
+      <strong class="col-1">お届け先</strong>
       〒<%= @order.postal_code %>
       <%= @order.address %><br>
       <%= @order.name %>
