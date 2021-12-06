@@ -1,4 +1,9 @@
-<h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+<div class="container">
+  <br>
+  <div class="row">
+    <h3 class="bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+  </div>
+  <br>
   <div>
     <% if @customer.errors.any? %>
       <%= @customer.errors.count %>件のエラーメッセージがあります。
@@ -7,50 +12,61 @@
       <% end %>
     <% end %>
   </div>
-
-  <table>
-    <tr>
-      <td>会員ID</td>
-      <td><%= @customer.id %></td>
-  </table>
-
+  <div class="row">
+    <div class="col-3">
+    会員ID
+    </div>
+    <div class="col-9">
+      <%= @customer.id %>
+    </div>
+  </div><br>
     <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :氏名 %>
-        <%= f.text_field :last_name %>
-        <%= f.text_field :first_name %>
+      <div class="form-group row">
+        <%= f.label :full_name, "氏名", class: "col-3" %>
+        <%= f.text_field :last_name, class: "col-2" %>
+        <div class="col-1"></div>
+        <%= f.text_field :first_name, class: "col-2" %>
       </div>
-      <div class="form-group">
-        <%= f.label :フリガナ %>
-        <%= f.text_field :last_name_kana %>
-        <%= f.text_field :first_name_kana %>
+      <div class="form-group row">
+        <%= f.label :full_nama_kana, "フリガナ", class: "col-3" %>
+        <%= f.text_field :last_name_kana, class: "col-2" %>
+        <div class="col-1"></div>
+        <%= f.text_field :first_name_kana, class: "col-2" %>
       </div>
-      <div>
-        <%= f.label :郵便番号 %>
-        <%= f.text_field :postal_code %>
+      <div class="form-group row">
+        <%= f.label :postal_code, "郵便番号", class: "col-3" %>
+        <%= f.text_field :postal_code, class: "col-2" %>
       </div>
-      <div>
-        <%= f.label :住所 %>
-        <%= f.text_field :address %>
+      <div class="form-group row">
+        <%= f.label :address, "住所", class: "col-3" %>
+        <%= f.text_field :address, class: "col-6" %>
       </div>
-      <div>
-        <%= f.label :電話番号 %>
-        <%= f.text_field :telephone_number %>
+      <div class="form-group row">
+        <%= f.label :telephone_number, "電話番号", class: "col-3" %>
+        <%= f.text_field :telephone_number, class: "col-2" %>
       </div>
-      <div>
-        <%= f.label :メールアドレス %>
-        <%= f.text_field :email %>
+      <div class="form-group row">
+        <%= f.label :email, "メールアドレス", class: "col-3" %>
+        <%= f.text_field :email, class: "col-2" %>
       </div>
-      <div>
-        <%= f.label :会員ステータス %>
-        <%= f.radio_button :is_deleted, :false %>
-        <%= f.label :is_deleted, "有効" %>
-        <%= f.radio_button :is_deleted, :true %>
-        <%= f.label :is_deleted, "無効" %>
+      <div class="form-group row">
+        <%= f.label :is_deleted, "会員ステータス", class: "col-3" %>
+        <div class="col-1">
+          <%= f.radio_button :is_deleted, :false %>
+          <%= f.label :is_deleted, "有効" %>
+        </div>
+        <div class="col-1">
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_deleted, "無効" %>
+        </div>
       </div>
-      <div>
-        <%= f.submit "変更を保存" %>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-2">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
       </div>
 
     <% end %>
 
+</div>
