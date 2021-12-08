@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :customers,path:"", cotrollers: {
+  devise_for :customers,path:"", controllers: {
+    sessions: 'customers/sessions'
   }
   # devise_scope :customers do
   #   get '/customers', to: redirect("/customers/sign_up")

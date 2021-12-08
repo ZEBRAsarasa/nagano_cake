@@ -26,6 +26,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.is_deleted = true
     @customer.update(customer_params)
+    reset_session
     redirect_to root_path
   end
 

@@ -39,9 +39,9 @@
               <p>入金確認</p>
             <% elsif order.order_status == "製作中" %>
               <p>製作中</p>
-            <% elsif order.order_status == "preparing_delivery" %>
+            <% elsif order.order_status == "発送準備中" %>
               <p>発送準備中</p>
-            <% elsif order.order_status == "delivered" %>
+            <% elsif order.order_status == "発送済み" %>
               <p>発送済み</p>
             <% end %>
             </td>
